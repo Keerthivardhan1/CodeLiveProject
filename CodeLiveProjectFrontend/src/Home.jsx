@@ -10,6 +10,8 @@ import { toast } from 'react-hot-toast'
 import logo from './assets/logo.svg'
 import { database } from './firebase';
 import { Button } from './Components/ui/button'
+import Tile from './Components/Tile'
+import { Alert, AlertDescription, AlertTitle } from './Components/ui/alert'
 
 const Home = () => {
 
@@ -166,7 +168,7 @@ const Home = () => {
               <div className='btn flex-col gap-2' >
             
                 <div className='flex gap-[3rem] items-center'>
-                <button className='Look The Editor' onClick={handleLook}>Look</button> 
+                <button className='Lock The Editor' onClick={handleLook}>Lock</button> 
                 <Button className=" copyBtn" variant="outline" onClick={CopyTeamID}>Copy Team ID</Button>
                 </div>
               <div className='flex gap-[3rem] items-center' >
@@ -191,10 +193,16 @@ const Home = () => {
           codeRef = {codeRef}
           />
         </div>
+        
         <div className='right'>
+          {sessionStorage.getItem('loggedIn') == 'true'?
           <ChatArea 
           socketRef = {socketRef} 
-          teamID = {teamID}/>
+          teamID = {teamID}/> : 
+          <Alert className="mt-64 w-4/5 ml-4  ">
+            <AlertTitle><a href='/'>Please Sign In</a></AlertTitle>
+            <AlertDescription>Chat   Feature Needs Authenication</AlertDescription>
+          </Alert>}
         </div>
     </div>
     </>

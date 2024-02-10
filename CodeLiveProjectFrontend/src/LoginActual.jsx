@@ -76,7 +76,10 @@ export default function LoginActual() {
         sessionStorage.setItem('loggedIn', true);
         sessionStorage.setItem('email',email)
         navigate("/Dashboard")
-    }).catch((e)=>confirm(e + "false"))
+    }).catch((e)=>{
+      confirm(e + "false")
+      sessionStorage.setItem('loggedIn', false)
+  })
   }
   return (
     <div>

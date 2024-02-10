@@ -29,7 +29,7 @@ export default function ChatArea({socketRef, teamID}){
       timestamp: new Date().getTime()
     }
     console.log(message, clientMessage)
-
+    database.ref('chat').push(message).then((e) => console.log('inserted')).catch((e) => console.log('rejected'))
     setSendMessage([...sendMessage, inputMessage])
     sendMessage.push(inputMessage)
 
