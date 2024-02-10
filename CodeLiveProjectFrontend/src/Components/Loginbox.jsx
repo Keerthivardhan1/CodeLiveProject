@@ -16,6 +16,9 @@ const handelSubmit = (e)=>{
         toast.error("Team ID and username are required")
         return;
     }
+    sessionStorage.setItem('username', userName)
+    console.log(sessionStorage.getItem('username'))
+    
     navigate(`/Home/${teamID}` , {
         state: {
             userName

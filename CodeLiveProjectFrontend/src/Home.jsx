@@ -27,13 +27,14 @@ const Home = () => {
     const codeRef = database.ref('code').child(teamID);
 
     const [clients , setClients] = useState([])
+    const [sessionClients, setSessionClients] = useState([])
+
 
     let isRoomLocked = new Map(); // To check whether room is locked or not
 
     isRoomLocked.set(teamID , false);
 
   
-
 
     useEffect(()=>{
       const init = async ()=>{
@@ -68,7 +69,8 @@ const Home = () => {
             // setClients((prev)=>[...prev , {userName , socket:socketID}] )
             console.log("clients = ", clients)
             setClients(clients)
-            localStorage.setItem("clients" , clients );
+            console.log(sessionClients + 'j1')
+            sessionStorage.setItem(teamID , sessionClients );
           
           })
 
