@@ -73,9 +73,10 @@ export default function LoginActual() {
     e.preventDefault();
     signInWithEmailAndPassword(getAuth(app), email, password).then((userCredential) => {
         console.log(userCredential)
+        sessionStorage.setItem('loggedIn', true);
+        sessionStorage.setItem('email',email)
         navigate("/Dashboard")
     }).catch((e)=>confirm(e + "false"))
-    localStorage.setItem('email', email);
   }
   return (
     <div>

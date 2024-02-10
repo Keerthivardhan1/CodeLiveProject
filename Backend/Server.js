@@ -6,7 +6,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -84,9 +83,9 @@ io.on('connection', (socket) => {
 
   })
 
-  socket.on('chat', ({teamID, inputMessage}) => {
+  socket.on('send_message', ({teamID, inputMessage}) => {
     console.log('mess',teamID, inputMessage );
-    socket.to(teamID).emit('message', inputMessage);
+    socket.in(teamID).emit('receive_message', inputMessage);
   })
   
 })
